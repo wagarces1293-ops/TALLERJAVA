@@ -92,3 +92,103 @@ Corrígelo: Hacer el casting explícito a double: double promedio = (double) sum
 
 3. Reto extra: ¿por qué el bug 2 no se notaría si los valores fueran -4, -8, -12, -8?
 R/= Porque la suma da -32 y al dividir entre 4 da exactamente -8. Da el resultado correcto por pura casualidad, lo que hace al bug muy peligroso ya que puede pasar las pruebas iniciales y fallar silenciosamente en producción.
+
+Lo hacemos juntos - La clase Enemigo
+
+1.  Cuantos objetos se crean
+
+Respuesta: Se crean 2 objetos, llamados goblin y dragon. Cada uno se
+crea con una instruccion new, por lo que ambos existen de manera
+independiente en la memoria. Aunque pertenecen a la misma clase, cada
+uno tiene sus propios atributos.
+
+2.  Si modifico goblin, cambia dragon. Por que
+
+Respuesta: No cambia. Cada objeto fue creado por separado con new, por
+lo que modificar los atributos de goblin no afecta los atributos de
+dragon. Cada objeto guarda su propia informacion.
+
+3.  Que valor tendria goblin.vida si nunca lo asignara
+
+Respuesta: Tendria el valor 0, ya que los atributos de tipo int reciben
+ese valor por defecto cuando se crea un objeto y no se les asigna un
+valor diferente.
+
+Ahora tu - La ficha completa del personaje
+
+1.  Como se calcula el poder de un personaje
+
+Respuesta: Poder = ataque * 3 + defensa * 2 + nivel * 10
+
+Esta formula combina las estadisticas principales del personaje para
+obtener un valor que representa su fuerza en el combate.
+
+2.  Como se calcula el dano real
+
+Respuesta: Dano = ataque - defensa
+
+Si el resultado es menor que 0, el dano debe ser 0.
+
+3.  Como se limita la curacion
+
+Respuesta: Despues de aumentar la vida del personaje, se debe verificar
+que no supere la vidaMaxima. Si la supera, la vida se ajusta al valor de
+vidaMaxima.
+
+if (p3.vida > p3.vidaMaxima) { p3.vida = p3.vidaMaxima; }
+
+4.  Por que los otros personajes no cambian despues del ataque
+
+Respuesta: Porque cada personaje fue creado con una instruccion new.
+Esto hace que cada uno sea un objeto independiente en memoria, por lo
+que los cambios realizados en un personaje no afectan a los demas.
+
+Caza de Bugs NIVEL-6
+
+1.  Que linea impide que el programa compile
+
+h3.nombre = “Nyx”;
+
+Que dice exactamente el compilador
+
+variable h3 might not have been initialized
+
+Que le falta a h3
+
+Heroe h3 = new Heroe();
+
+Antes de usar la variable, es necesario crear el objeto correspondiente.
+
+2.  Por que h1 imprime “Kael - 150” en lugar de “Aria - 100”
+
+Respuesta: Porque la instruccion Heroe h2 = h1; no crea un nuevo objeto.
+Solo copia la referencia, por lo que h1 y h2 apuntan al mismo objeto en
+memoria. Cuando se modifican los datos usando h2, esos cambios tambien
+se reflejan al imprimir h1.
+
+3.  Diagrama de memoria
+
+h1 —-+ | v +—————–+ | nombre = Kael | | vida = 150 | +—————–+ ^ | h2 —-+
+
+Respuesta: El diagrama muestra que h1 y h2 apuntan al mismo objeto. Por
+esa razon, cualquier cambio realizado desde una de las variables tambien
+se observa desde la otra.
+
+4.  Corrige el bug 2
+
+En lugar de:
+
+Heroe h2 = h1;
+
+Debe ser:
+
+Heroe h2 = new Heroe();
+
+De esta forma, h1 y h2 seran objetos diferentes y cada uno tendra sus
+propios datos.
+
+Cuantos new debe haber en un programa con tres heroes distintos
+
+Respuesta: Deben existir 3 instrucciones new, una para crear cada heroe.
+Asi se garantiza que cada uno sea un objeto independiente y que sus
+cambios no afecten a los demas.
