@@ -1,0 +1,65 @@
+Preguntas - nivel 3
+
+1. ¿Cuántas sesiones se necesitan? 
+R//= Se necesitan 20 seciones para completar el entrenamiento.
+2. ¿Qué pasa si borras la línea experiencia += 5;? 
+R//= Se crea un ciclo infinito.
+3. Reescríbelo usando for. ¿Cuál de las dos versiones te parece más clara y por qué? 
+R//= El ciclo While, ya que el ejercicio da las herramientras exactas para llevarlo a cabo.
+
+=============================================================================
+
+Caza de Bugs # 3 
+
+1. ¿Cuál de las 3 partes del ciclo falta? 
+R/= Falta el incremento en i, haciendo que se quede atascado en un ciclo infinito.
+2. Escribe la línea que falta y dónde exactamente va: _______
+R= i++ o (i =+ 1)
+3. Reto extra: si alguien "arregla" el programa poniendo i++ antes de suma += i, ¿cuánto daría la suma? Haz la
+   prueba de escritorio y compárala con el resultado correcto (55). _______ 
+R/= La suma da 65 mientras que correctamente 55
+4. Reto extra 2: reescríbelo con for en tres líneas. Explica por qué con for este bug era imposible. _______
+R/= Es imposible, ya que la estructura del for no lo permite.
+
+============================================================================
+
+1. Pídele: "Escribe un programa Java con un ciclo while que tenga un bug de ciclo infinito, pero NO me digas dónde
+   está."
+2. Encuéntralo tú con prueba de escritorio (con simular 4 vueltas basta para detectarlo).
+3. Ahora al revés: pídele que resuelva la Misión 3.1 y audita:
+
+   ☐ ¿Puso las inicializaciones antes del do o las metió adentro? - Si
+
+   ☐ ¿La condición de salida contempla las dos causas (salir y morir)? - Si
+
+   ☐ ¿El tope de vida en 100 está bien aplicado? - Si
+
+   ☐ ¿Usó algo prohibido (métodos, constructores)? Si, uso el case
+
+4. Pregunta final: "¿Cuándo NO se puede convertir un while en un for?" Contrástalo con la tabla de este nivel.
+
+===============================================
+
+NIVEL 4 - EL INVENTARIO
+
+Preguntas:
+1. ¿Por qué se imprime (i + 1) y no i en el mensaje "Golpe N"? _______
+R/= Por que los arreglos van de 0 a 5, y para el usuario seria confuso.
+2. ¿Qué pasaría con i <= danios.length? _______
+R/= Intetaria acceder a un indice que no existe saldria: ArrayIndexOutOfBoundsException
+3. ¿Cuál es el índice del último elemento? _______
+R/= 5 o (danios.length - 1)
+
+===============================================
+
+Caza de Bugs #4 
+
+1. Bug 1: ejecuta el programa. ¿Cuántas líneas alcanza a imprimir antes de caerse? ¿Cuál es el mensaje de error
+   exacto? _______
+R/= 4 lineas y el mensaje es: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+2. ¿Por qué i <= vidas.length es incorrecto? Escribe el índice máximo válido: _______
+R/= Porque los arreglos inician desde 0, la posicion 4 no existiria, solo [0,1,2,3]
+3. Bug 2: ¿por qué vidas.length() no compila? ¿Cuál es la diferencia con String? _______
+R/= Porque no es una funcion, es un atributo y va sin parentesis.
+4. Corrige ambos y verifica.
+R/= 
