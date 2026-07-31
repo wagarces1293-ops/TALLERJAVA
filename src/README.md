@@ -62,4 +62,33 @@ R/= Porque los arreglos inician desde 0, la posicion 4 no existiria, solo [0,1,2
 3. Bug 2: ¿por qué vidas.length() no compila? ¿Cuál es la diferencia con String? _______
 R/= Porque no es una funcion, es un atributo y va sin parentesis.
 4. Corrige ambos y verifica.
-R/= 
+R/= Se corrigió la condición del ciclo a i < vidas.length y se quitó los paréntesis a vidas.length.
+
+===============================================
+
+NIVEL 5 - EL SALÓN DE LA FAMA
+
+Preguntas (El daño máximo):
+1. Hay dos golpes de 45 (índices 1 y 3). ¿Cuál de los dos reporta el programa y por qué?
+R/= Reporta el primero (índice 1, turno 2), porque la condición (golpes[i] > maximo) es una comparación estricta (>) y el segundo 45 no es estrictamente mayor que el primero.
+
+2. ¿Qué habría que cambiar para que reportara el último en vez del primero?
+R/= Cambiar el operador de comparación estricta (>) por mayor o igual (>=).
+
+3. ¿Por qué el ciclo empieza en i = 1 y no en i = 0?
+R/= Porque la posición 0 ya se asignó como valor inicial del máximo (maximo = golpes[0]); comparar el elemento 0 consigo mismo es innecesario.
+
+===============================================
+
+Caza de Bugs #5
+
+1. Bug 1: el máximo imprime 0, pero 0 no está en el array. ¿Por qué?
+R/= Porque int maximo se inicializó en 0. Al ser todas las temperaturas negativas (-5, -12, -3, -7), ninguna supera el 0 y el máximo queda en 0.
+Corrígelo: Inicializar con el primer elemento int maximo = temperaturas[0]; y comenzar el ciclo en i = 1.
+
+2. Bug 2: la suma es -27 y hay 4 elementos, así que el promedio debería ser -6.75. ¿Qué imprime realmente y por qué?
+R/= Imprime -6.0 porque suma / temperaturas.length es una división entre dos números enteros (int), descartando la parte decimal.
+Corrígelo: Hacer el casting explícito a double: double promedio = (double) suma / temperaturas.length;
+
+3. Reto extra: ¿por qué el bug 2 no se notaría si los valores fueran -4, -8, -12, -8?
+R/= Porque la suma da -32 y al dividir entre 4 da exactamente -8. Da el resultado correcto por pura casualidad, lo que hace al bug muy peligroso ya que puede pasar las pruebas iniciales y fallar silenciosamente en producción.
